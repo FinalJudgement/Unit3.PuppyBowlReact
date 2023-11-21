@@ -5,6 +5,8 @@ const PuppiesList = ({
   setPuppy,
   setPuppyArray,
   puppyArray,
+  setSearch,
+  search,
 }) => {
   const [error, setError] = useState(null);
 
@@ -29,21 +31,41 @@ const PuppiesList = ({
     <div>
       <h2>{puppyArray.length} puppies in Puppy Roster</h2>
       {error && <p>{error}</p>}
-      {puppyArray.map((singlePuppyObj) => {
-        return (
-          <div
-            key={singlePuppyObj.id}
-            onClick={() => {
-              setPuppy(singlePuppyObj);
-              setShowDetails(true);
-            }}
-            className="card"
-          >
-            <h3 key={singlePuppyObj.name}>{singlePuppyObj.name}</h3>
-            <img src={singlePuppyObj.imageUrl} alt="" />
-          </div>
-        );
-      })}
+
+      {search === ""
+        ? puppyArray.map((singlePuppyObj) => {
+            console.log(singlePuppyObj.name);
+            return (
+              <div
+                key={singlePuppyObj.id}
+                onClick={() => {
+                  setPuppy(singlePuppyObj);
+                  setShowDetails(true);
+                }}
+                className="card"
+              >
+                <h3 key={singlePuppyObj.name}>{singlePuppyObj.name}</h3>
+                <img src={singlePuppyObj.imageUrl} alt="" />
+              </div>
+            );
+          })
+        : puppyArray.map((singlePuppyObj) => {
+            if (singlePuppyObj.name === search) {
+              return (
+                <div
+                  key={singlePuppyObj.id}
+                  onClick={() => {
+                    setPuppy(singlePuppyObj);
+                    setShowDetails(true);
+                  }}
+                  className="card"
+                >
+                  <h3 key={singlePuppyObj.name}>{singlePuppyObj.name}</h3>
+                  <img src={singlePuppyObj.imageUrl} alt="" />
+                </div>
+              );
+            }
+          })}
     </div>
   );
 };

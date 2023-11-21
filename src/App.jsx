@@ -13,6 +13,7 @@ function App() {
   const [status, setStatus] = useState("");
   const [error, setError] = useState(null);
   const [puppyToSubmit, setPuppyToSubmit] = useState({});
+  const [search, setSearch] = useState("");
   const resetForm = () => {
     setName("");
     setImgUrl("");
@@ -43,6 +44,11 @@ function App() {
     }
   };
 
+  const searchHandler = (e) => {
+    e.preventDefault();
+    console.log(search);
+  };
+
   return (
     <>
       <div>
@@ -57,68 +63,87 @@ function App() {
           />
         ) : (
           <div>
-            <form onSubmit={submitHandler}>
-              <p>Register Your Pup</p>
-              <label htmlFor="">
-                Name:
-                <input
-                  type="text"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                />
-              </label>
-              <br />
-              <br />
-              <label htmlFor="">
-                ImageURL:
-                <input
-                  type="text"
-                  value={imgUrl}
-                  onChange={(e) => setImgUrl(e.target.value)}
-                />
-              </label>
-              <br />
-              <br />
-              <label htmlFor="">
-                Breed:
-                <input
-                  type="text"
-                  value={breed}
-                  onChange={(e) => setBreed(e.target.value)}
-                />
-              </label>
-              <br />
-              <br />
-              <label htmlFor="">
-                Field:
-                <input
-                  type="radio"
-                  name="status"
-                  value="field"
-                  checked={status === "field"}
-                  onChange={() => setStatus("field")}
-                />
-              </label>
-              <label htmlFor="">
-                Bench:
-                <input
-                  type="radio"
-                  name="status"
-                  value="bench"
-                  checked={status === "bench"}
-                  onChange={() => setStatus("bench")}
-                />
-              </label>
-              <br />
-              <br />
-              <button type="submit">Submit</button>
-              {error && <p>{error}</p>}
-            </form>
+            <div className="forms">
+              <form className="newPupForm" onSubmit={submitHandler}>
+                <p>Register Your Pup</p>
+                <label>
+                  Name:
+                  <input
+                    type="text"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                  />
+                </label>
+                <br />
+                <br />
+                <label>
+                  ImageURL:
+                  <input
+                    type="text"
+                    value={imgUrl}
+                    onChange={(e) => setImgUrl(e.target.value)}
+                  />
+                </label>
+                <br />
+                <br />
+                <label>
+                  Breed:
+                  <input
+                    type="text"
+                    value={breed}
+                    onChange={(e) => setBreed(e.target.value)}
+                  />
+                </label>
+                <br />
+                <br />
+                <label>
+                  Field:
+                  <input
+                    type="radio"
+                    name="status"
+                    value="field"
+                    checked={status === "field"}
+                    onChange={() => setStatus("field")}
+                  />
+                </label>
+                <label>
+                  Bench:
+                  <input
+                    type="radio"
+                    name="status"
+                    value="bench"
+                    checked={status === "bench"}
+                    onChange={() => setStatus("bench")}
+                  />
+                </label>
+                <br />
+                <br />
+                <button type="submit">Submit</button>
+                {error && <p>{error}</p>}
+              </form>
+              <form className="search" onSubmit={searchHandler}>
+                <label>
+                  Find Your Pup
+                  <br />
+                  <br />
+                  <input
+                    type="text"
+                    onChange={(e) => setSearch(e.target.value)}
+                  />
+                </label>
+                <br />
+                <br />
+                <button>Search</button>
+              </form>
+            </div>
+
             <PuppiesList
               setShowDetails={setShowDetails}
               setPuppy={setPuppy}
               setPuppyArray={setPuppyArray}
               puppyArray={puppyArray}
+              setSearch={setSearch}
+              search={search}
             />
           </div>
         )}
