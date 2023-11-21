@@ -1,0 +1,62 @@
+#root {
+  max-width: 1480px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+form {
+  display: inline-block;
+  text-align: center;
+  left: 40px;
+  top: 200px;
+  width: 200px;
+  padding: 25px;
+  background-color: rgb(253, 80, 80);
+}
+
+.detail {
+  width: 500px;
+  margin: 70px auto;
+  background-color: rgb(103, 103, 255);
+  padding: 50px;
+}
+
+.detail div {
+  display: inline-block;
+  width: 250px;
+
+  vertical-align: top;
+  color: white;
+}
+
+.detail p {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.detail button {
+  background-color: rgb(253, 80, 80);
+  color: white;
+  width: 150px;
+  border-radius: 10px;
+  font-size: 1.1rem;
+}
+
+.card {
+  display: inline-block;
+  background-color: rgba(236, 39, 0, 0.81);
+  margin: 2em;
+  width: 250px;
+  height: 350px;
+}
+
+img {
+  height: 280px;
+  width: 230px;
+  object-fit: cover;
+}
+
+.read-the-docs {
+  color: #888;
+}
